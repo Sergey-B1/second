@@ -17,6 +17,9 @@
       <input class="" type="file" name="file">
       <input class="btn btn-outline-success" type="submit" value="Загрузить" name="download">
     </form>
+    <form style="width:400px; margin:auto" action="controller.php" method="post" enctype="multipart/form-data">
+      <input class="btn btn-outline-success" type="submit" value="Создать вручную" name="create">
+    </form>
     <div >
     <?php
 

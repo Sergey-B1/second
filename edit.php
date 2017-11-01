@@ -31,7 +31,7 @@ $OldName = $_GET['edit'];
  <p>Здесь можно оставить комментарий</p>
  <form action="controller.php" method="post">
  <input type="hidden" name="OldName3" value="<?php echo $OldName; ?>">
- <textarea rows="5" cols="15" name="Comment"><?php bd_result($OldName, $array_result); ?></textarea><br>
+ <textarea rows="5" cols="15" name="Comment"><?php comment_view($array_result, $OldName); ?></textarea><br>
  <input type="submit" value="Изменить" name="comment_edit_yes"/>
  </form>
 

@@ -48,7 +48,7 @@ if (isset($_POST['comment_edit_yes'])){
   if (isset($_POST['Comment']) && isset($_POST['OldName3'])){
     $Comment = ($_POST['Comment']);
     $OldName3 = ($_POST['OldName3']);
-    comment_record($Comment, $OldName3, $result);
+    comment_record($Comment);
   }
   exit;
 }
@@ -56,8 +56,7 @@ if (isset($_POST['comment_edit_yes'])){
 // Для загрузки файла
 if (isset($_FILES['file'])){
   $file = $_FILES['file'];
-  $file_b = $_FILES['name'];
-//  $OldName3= $_POST['OldName3'];
+  $file_b = $file['name'];
   file_upload($file);
   bd_record($file_b);
   exit;

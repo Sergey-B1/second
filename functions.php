@@ -19,13 +19,13 @@ function file_upload($file){
 };}
 //Функция для занесения строки id, title, comment в БД
 function bd_record($file_b){
-  $connection = mysql_connect("second", "root", ""); // Подкл. к серверу БД
-  mysql_select_db("bd_1", $connection);
-  $bd_file = mysql_query("INSERT INTO biblioteka (title, comment) VALUES ('$file_b', 'нет комментариев)");
+  $connection = mysqli_connect("second", "root", ""); // Подкл. к серверу БД
+  mysqli_select_db($connection, "bd_1");
+  $bd_file = mysqli_query($connection, "INSERT INTO `biblioteka` (`title`, `comment`) VALUES ('$file_b', 'нет комментариев');");
   if ($bd_file){
     echo "Информация занесена в базу данных";
   } else {
-    echo "Не удалось занести информацию в базу данных"; print_r($_FILES);
+    echo "Не удалось занести информацию в базу данных";
   }
 }
 // Функция для открытия файла
@@ -73,10 +73,10 @@ function content_edit($OldName2, $NewContent){
   file_put_contents(DIR.$OldName2, $NewContent);
 }
 // Функция для внесения комментария в БД
-function comment_record($Comment, $OldName3, $result){
-  if ($result != $Comment){
-  mysql_connect("second", "root", "");
-  mysql_query(" INSERT INTO biblioteka (comment) VALUES ($Comment) ");
+function comment_record($Comment){
+  $connection = mysqli_connect("second", "root", "");
+  mysqli_select_db($connection, "bd_1");
+  mysqli_query($connection, "INSERT INTO `biblioteka` (`comment`) VALUES ('$Comment');");
 //  mysqli_real_escape_string($rec);
-};
 }
+// CОЗДАЮТСЯ НОВЫЕ СТРОКИ С КОММЕНТАРИЯМИ, НАДО ЧТОБЫ МЕНЯЛ СУЩЕСТВУЮЩИЕ
