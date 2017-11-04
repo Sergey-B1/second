@@ -10,6 +10,7 @@ if (isset($_POST['FileDelete'])){
   }
 if (isset($_POST['delete_yes'])){
     file_delete($FileDelete);
+    bd_delete($FileDelete);
     header ('Location: index.php');
     exit;
 }
@@ -60,4 +61,14 @@ if (isset($_FILES['file'])){
   file_upload($file);
   bd_record($file_b);
   exit;
+}
+
+// Для создания файла вручную
+if (isset($_POST['create_file'])){
+  if (($_POST['NewFileName']) and ($_POST['NewFileContent'])){
+    $NewFileName = $_POST['NewFileName'];
+    $NewFileContent = $_POST['NewFileContent'];
+    file_create($NewFileName, $NewFileContent);
+    bd_record($NewFileName);
+  };
 }

@@ -1,23 +1,29 @@
+<? require_once 'main.php'; ?>
 <!DOCTYPE html>
 <html lang="ru">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
-  <title>Просмотр</title>
+  <title>Создать файл</title>
+  <link rel="stylesheet" href="css/bootstrap.css">
+
 </head>
 <body>
+<div style="width:500px; margin:auto">
+  <h3>Создание файла</h3><br>
 
-<? require_once 'main.php'; ?>
+  <div class="form-group">
+    <form action="controller.php" method="post">
+     <p>Введите имя файла</p>
+     <input class="form-control" type="text" name="NewFileName"><br>
+     <p>Введите содержимое файла</p>
+     <textarea class="form-control" name="NewFileContent"></textarea>
+     <p><input class="btn btn-primary" type="submit" value="Создать файл" name="create_file"/></p>
+    </form>
+  </div>
+</div>
 
-<form action="main.php" method="post">
- <p>Создание файла <br><? //// ?></p><br>
- <p>Введите имя файла</p>
- <input type="text" name="NewFileName"><br>
-  <p>Введите содержимое файла</p>
- <textarea rows="10" cols="20" name="NewFileContent"></textarea>
- <p><input type="submit" value="Создать файл"/></p>
-</form>
 
 
  </body>
