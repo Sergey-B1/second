@@ -24,7 +24,7 @@ if (isset($_POST['return'])){
     header ('Location: index.php');
     exit;
 }
-// Для редактирования переименования файла
+// Для переименования файла
 if (isset($_POST['name_edit_yes'])){
 if (isset($_POST['OldName']) && isset($_POST['NewName'])){
   $OldName = $_POST['OldName'];
@@ -49,14 +49,14 @@ if (isset($_POST['comment_edit_yes'])){
   if (isset($_POST['Comment']) && isset($_POST['OldName3'])){
     $Comment = ($_POST['Comment']);
     $OldName3 = ($_POST['OldName3']);
-    comment_record($Comment);
+    comment_record($Comment, $OldName3);
   }
   exit;
 }
 
 // Для загрузки файла
 if (isset($_FILES['file'])) {
-  $file = $_FILES['file']; 
+  $file = $_FILES['file'];
   $file_b = $file['name'];
   file_upload($file);
     if ($file['name'] != ""){;
@@ -71,6 +71,8 @@ if (isset($_POST['create_file'])){
     $NewFileName = $_POST['NewFileName'];
     $NewFileContent = $_POST['NewFileContent'];
     file_create($NewFileName, $NewFileContent);
-    bd_record($NewFileName);
+    bd_record($NewFileName.".txt");
   };
 }
+
+// Для просмотра комментария к файлу

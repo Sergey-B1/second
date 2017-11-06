@@ -79,10 +79,10 @@ function content_edit($OldName2, $NewContent){
   file_put_contents(DIR.$OldName2, $NewContent);
 }
 // Функция для внесения комментария в БД
-function comment_record($Comment){
+function comment_record($Comment, $OldName3){
   $connection = mysqli_connect("second", "root", "");
   mysqli_select_db($connection, "bd_1");
-  $rec = mysqli_query($connection, "INSERT INTO `biblioteka` (`comment`) VALUES ('$Comment');");
+  $rec = mysqli_query($connection, "UPDATE `biblioteka` SET `comment`='$Comment' WHERE `title`='$OldName3';");
   mysqli_real_escape_string($connection, $rec);
   }
 // Функция для создания файла вручную

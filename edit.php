@@ -50,7 +50,7 @@ $OldName = $_GET['edit'];
      <input class="btn btn-primary" type="submit" value="Отмена"/>
    </form>
  </div>
- 
+
 </div>
 </body>
 </html>
