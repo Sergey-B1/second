@@ -55,11 +55,13 @@ if (isset($_POST['comment_edit_yes'])){
 }
 
 // Для загрузки файла
-if (isset($_FILES['file'])){
-  $file = $_FILES['file'];
+if (isset($_FILES['file'])) {
+  $file = $_FILES['file']; 
   $file_b = $file['name'];
   file_upload($file);
-  bd_record($file_b);
+    if ($file['name'] != ""){;
+      bd_record($file_b);
+    }
   exit;
 }
 

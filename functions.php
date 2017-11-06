@@ -42,7 +42,6 @@ function file_delete($FileDelete){
         }
         if (file_exists(DIR.$FileDelete)){
         unlink(DIR.$FileDelete);
-
         };
         }
 // Функция для удаления соответствующих данных из БД при удалении файла
@@ -50,12 +49,7 @@ function bd_delete($FileDelete){
   $connection = mysqli_connect("second", "root", ""); // Подкл. к серверу БД
   mysqli_select_db($connection, "bd_1");
   $bd_file = mysqli_query($connection, "DELETE FROM `biblioteka` WHERE `title`= '$FileDelete';");
-  if ($bd_file){
-    echo "Информация занесена в базу данных";
-  } else {
-    echo "Не удалось занести информацию в базу данных";
   }
-}
 // Следующие три функции служат для переименования файла:
 function name_error($OldName, $NewName){
     if(!isset($OldName)) {
@@ -89,7 +83,7 @@ function comment_record($Comment){
   $connection = mysqli_connect("second", "root", "");
   mysqli_select_db($connection, "bd_1");
   $rec = mysqli_query($connection, "INSERT INTO `biblioteka` (`comment`) VALUES ('$Comment');");
-  mysqli_real_escape_string($rec);
+  mysqli_real_escape_string($connection, $rec);
   }
 // Функция для создания файла вручную
 function file_create($NewFileName, $NewFileContent){

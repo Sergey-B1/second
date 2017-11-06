@@ -1,6 +1,5 @@
 <?php require_once 'main.php';
-
-  ?>
+?>
 <!DOCTYPE html>
 <html lang="ru">
 <head>
@@ -24,8 +23,8 @@
     <?php
      unset($files[0], $files[1]);
         foreach ($files as $value) {?>
-        <div style="width:380px; margin:auto">
-          <div style="display:inline-block; width:100px">
+        <div style="width:580px; margin:auto">
+          <div style="display:inline-block; width:300px">
             <a href='open.php?open=<?php echo $value ?>' class="badge badge-light"><?php echo $value ?></a>
           </div>
           <div style="display:inline-block; width:100px">
@@ -35,7 +34,7 @@
             <a href='delete.php?delete=<?php echo $value ?>' class="badge badge-danger">Удалить</a><br>
           </div>
           <div style="display:inline-block; width:70px">
-            <a href='comment.php?comment=<?php $result ?>' class="badge badge-light">Комментарии</a><br>
+            <a href='comment.php?comment=<?php echo $value ?>' class="badge badge-light">Комментарии</a><br>
           </div>
       </div>
   <?php } ?>
